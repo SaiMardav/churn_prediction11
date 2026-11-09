@@ -43,10 +43,7 @@ def prepare_deployment():
 
     deployment_dir = project_root / "deployment"
 
-    if deployment_dir.exists():
-        shutil.rmtree(deployment_dir)
-
-    deployment_dir.mkdir(parents=True)
+    deployment_dir.mkdir(parents=True, exist_ok=True)
 
     client = MlflowClient()
 
@@ -124,9 +121,9 @@ def prepare_deployment():
 
     print("\n[INFO] Deployment bundle:")
     print("deployment/")
-    print("├── model.pkl")
-    print("├── preprocessor.pkl")
-    print("└── model_metadata.json")
+    print("|-- model.pkl")
+    print("|-- preprocessor.pkl")
+    print("`-- model_metadata.json")
 
     print("\n[SUCCESS] Deployment preparation completed.")
 
